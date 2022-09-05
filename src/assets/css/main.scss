@@ -1,0 +1,97 @@
+body {
+	background-color: #f6f6f6;
+	font-family: 'helveticaNeue', 'sans-serif';
+}
+* {
+	box-sizing: border-box;
+}
+a {
+	text-decoration: unset;
+}
+p {
+	margin: 0;
+}
+.btn {
+	color: #ffffff;
+	background: #62a1eb;
+	border-radius: 8px;
+	min-width: 387px;
+	height: 60px;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	padding-left: 70px;
+	padding-right: 70px;
+	border: none;
+	cursor: pointer;
+	transition: .2s ease;
+	@media (max-width: 767px) {
+		min-width: 100%;
+	}
+	&:hover {
+		background-color: #317AD0;
+	}
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.al-center {
+	align-items: center;
+}
+.container {
+	width: 1226px;
+	margin: 0 auto;
+	@media (max-width: 1439px) {
+		width: 90%;
+	}
+}
+.grid {
+	display: grid;
+	&-col-1 {
+		grid-template-columns: 1fr;
+	}
+	&-col-2 {
+		grid-template-columns: 1fr 1fr;
+	}
+	&-col-3 {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	&-gap-25 {
+		gap: 25px;
+	}
+	&-gap-50 {
+		gap: 50px;
+	}
+	&-gap-60 {
+		gap: 60px;
+	}
+	&.j-btw {
+		justify-content: space-between;
+	}
+}
+
+/* form */
+.form-container {
+	background-color: #ffffff;
+	border-radius: 18px;
+	&__form {
+		max-width: 878px;
+		margin: 0 auto;
+	}
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
+}
