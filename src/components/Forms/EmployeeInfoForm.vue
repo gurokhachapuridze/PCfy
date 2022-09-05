@@ -153,7 +153,6 @@
 			const v$ = useVuelidate(rules, state);
 
 			const updateValue = (fieldName, event) => {
-				chang;
 				state.value[fieldName] = event;
 			};
 
