@@ -265,6 +265,7 @@
 
 				if (res.status === 200) {
 					success.value = true;
+					localStorage.removeItem('employeeData');
 				}
 			};
 			store.getBrands();

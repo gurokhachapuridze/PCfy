@@ -173,15 +173,15 @@
 				if (employeeData) {
 					state.value = JSON.parse(employeeData);
 				}
-			}),
-				watch(
-					() => props.clickedNext,
-					(value) => {
-						if (value) {
-							submit();
-						}
+			});
+			watch(
+				() => props.clickedNext,
+				(value) => {
+					if (value) {
+						submit();
 					}
-				);
+				}
+			);
 			watch(
 				() => state.value,
 				(value) => {
