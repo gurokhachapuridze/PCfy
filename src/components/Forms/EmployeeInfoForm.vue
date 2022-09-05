@@ -75,13 +75,13 @@
 		props: {
 			clickedNext: {
 				type: Boolean,
-			}
+			},
 		},
 		components: { Input, Dropdown },
 		emits: ['next'],
 		setup(props, { emit }) {
 			const store = useStore();
-			const teams = computed(() => store.teams.map((team) => ({ ...team})))
+			const teams = computed(() => store.teams.map((team) => ({ ...team })));
 			const fieldLength = ref(2);
 			const state = ref({
 				name: '',
@@ -97,8 +97,7 @@
 					return store.positions.filter(
 						(position) => position.team_id === state.value.team_id
 					);
-				} else return store.positions.map((pos) => ({ ...pos}));
-
+				} else return store.positions.map((pos) => ({ ...pos }));
 			});
 
 			//georgian check validation
@@ -154,14 +153,13 @@
 			const v$ = useVuelidate(rules, state);
 
 			const updateValue = (fieldName, event) => {
-				chang
+				chang;
 				state.value[fieldName] = event;
 			};
 
 			const submit = async () => {
 				const result = await v$.value.$validate();
 				if (!result) {
-					// notify user form is invalid
 					return;
 				} else {
 					store.employeeData = state.value;
@@ -172,36 +170,26 @@
 			store.getTeams();
 			store.getPositions();
 			onMounted(() => {
-					const employeeData = localStorage.getItem('employeeData');
-					console.log(employeeData,'employeeData')
-					if (employeeData) {
-						state.value = JSON.parse(employeeData)
-					}
-					console.log(state.value,'state')
-
-			}),
-			watch(
-				() => props.clickedNext,
-				(value) => {
-					if (value) {
-						submit();
-					}
+				const employeeData = localStorage.getItem('employeeData');
+				if (employeeData) {
+					state.value = JSON.parse(employeeData);
 				}
-			);
+			}),
+				watch(
+					() => props.clickedNext,
+					(value) => {
+						if (value) {
+							submit();
+						}
+					}
+				);
 			watch(
 				() => state.value,
 				(value) => {
-					console.log(value);
-					// Put the object into storage
 					localStorage.setItem('employeeData', JSON.stringify(value));
-
-					// Retrieve the object from storage
-					const retrievedObject = localStorage.getItem('employeeData');
-
-					console.log('retrievedObject: ', JSON.parse(retrievedObject));
-				}, {deep: true}
+				},
+				{ deep: true }
 			);
-
 
 			return {
 				teams,
@@ -219,6 +207,14 @@
 	.form-container {
 		&__form {
 			padding: 69px 0;
+			@media (max-width: 767px) {
+				padding: 40px 20px;
+			}
+		}
+		@media (max-width: 767px) {
+			.grid-col-2 {
+				grid-template-columns: 1fr;
+			}
 		}
 	}
 </style>

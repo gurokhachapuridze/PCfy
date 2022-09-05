@@ -376,6 +376,9 @@
 			}
 			.btn {
 				min-width: 233px;
+				@media (max-width: 767px) {
+					display: none;
+				}
 			}
 			.back {
 				font-weight: 500;
@@ -383,6 +386,11 @@
 				line-height: 21px;
 				color: #62a1eb;
 				text-align: left;
+			}
+		}
+		@media (max-width: 767px) {
+			.grid-col-2 {
+				grid-template-columns: 1fr;
 			}
 		}
 	}

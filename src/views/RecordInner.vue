@@ -18,12 +18,15 @@
 		<div class="records__title">ᲚᲔᲞᲢᲝᲞᲘᲡ ᲘᲜᲤᲝ</div>
 		<div class="container">
 			<div class="grid grid-col-2 grid-gap-60 border-bottom">
-				<img class="picture__png" 			:src="'https://pcfy.redberryinternship.ge' + laptopData.image"
- :alt="laptopData.name" />
+				<img
+					class="picture__png"
+					:src="'https://pcfy.redberryinternship.ge' + laptopData.image"
+					:alt="laptopData.name"
+				/>
 				<div class="text-row-cont">
 					<div class="flex" v-for="data in userInfo" :key="data.title">
-						<p>{{data.title}}:</p> 
-						<p>{{data.value}}</p> 
+						<p>{{ data.title }}:</p>
+						<p>{{ data.value }}</p>
 					</div>
 				</div>
 			</div>
@@ -31,15 +34,18 @@
 				<div class="grid grid-col-2 grid-gap-60">
 					<div class="text-row-cont">
 						<div class="flex" v-for="data in laptopInfo.row1" :key="data.title">
-							<p>{{data.title}}:</p> 
-							<p>{{data.value}}</p> 
+							<p>{{ data.title }}:</p>
+							<p>{{ data.value }}</p>
 						</div>
 					</div>
 					<div class="text-row-cont">
-
-						<div class="flex text-row-cont" v-for="data in laptopInfo.row2" :key="data.title">
-						<p>{{data.title}}:</p> 
-						<p>{{data.value}}</p> 
+						<div
+							class="flex text-row-cont"
+							v-for="data in laptopInfo.row2"
+							:key="data.title"
+						>
+							<p>{{ data.title }}:</p>
+							<p>{{ data.value }}</p>
 						</div>
 					</div>
 				</div>
@@ -48,15 +54,18 @@
 				<div class="grid grid-col-2 grid-gap-60">
 					<div class="text-row-cont">
 						<div class="flex" v-for="data in laptopInfo.row3" :key="data.title">
-							<p>{{data.title}}:</p> 
-							<p>{{data.value}}</p> 
+							<p>{{ data.title }}:</p>
+							<p>{{ data.value }}</p>
 						</div>
 					</div>
 					<div class="text-row-cont">
-
-						<div class="flex text-row-cont" v-for="data in laptopInfo.row4" :key="data.title">
-						<p>{{data.title}}:</p> 
-						<p>{{data.value}}</p> 
+						<div
+							class="flex text-row-cont"
+							v-for="data in laptopInfo.row4"
+							:key="data.title"
+						>
+							<p>{{ data.title }}:</p>
+							<p>{{ data.value }}</p>
 						</div>
 					</div>
 				</div>
@@ -68,7 +77,7 @@
 <script>
 	import { computed, onMounted } from 'vue';
 	import { useStore } from '@/store';
-	import { useRoute } from 'vue-router';	
+	import { useRoute } from 'vue-router';
 
 	export default {
 		setup() {
@@ -78,89 +87,86 @@
 			const teams = computed(() => store.teams);
 			const brands = computed(() => store.brands);
 
-
 			const userData = computed(() => store.laptopInner.user);
 			const laptopData = computed(() => store.laptopInner.laptop);
 
 			const getPositionWithId = (id) => {
-				const position = positions.value.find(position => position.id === id);
+				const position = positions.value.find((position) => position.id === id);
 				return position && position.name;
 			};
 			const getTeamWithId = (id) => {
-				const team = teams.value.find( team => team.id === id);
+				const team = teams.value.find((team) => team.id === id);
 				return team && team.name;
 			};
 			const getBrandWithId = (id) => {
-				const brand = brands.value.find( brand => brand.id === id);
+				const brand = brands.value.find((brand) => brand.id === id);
 				return brand && brand.name;
 			};
-			const userInfo = computed(() => ([
+			const userInfo = computed(() => [
 				{
 					title: 'სახელი',
-					value: `${userData.value.name} ${userData.value.surname}`
+					value: `${userData.value.name} ${userData.value.surname}`,
 				},
 				{
 					title: 'თიმი',
-					value: getTeamWithId(userData.value.team_id)
+					value: getTeamWithId(userData.value.team_id),
 				},
 				{
 					title: 'პოზიცია',
-					value: getPositionWithId(userData.value.position_id)
-				}
-			]));
+					value: getPositionWithId(userData.value.position_id),
+				},
+			]);
 
-			const laptopInfo = computed(() => (
-				{
+			const laptopInfo = computed(() => ({
 				row1: [
-						{
+					{
 						title: 'ლეპტოპის სახელი',
-						value: laptopData.value.name
+						value: laptopData.value.name,
 					},
 					{
 						title: 'ლეპტოპის ბრენდი',
-						value: getBrandWithId(laptopData.value.brand_id)
+						value: getBrandWithId(laptopData.value.brand_id),
 					},
 					{
 						title: 'RAM',
-						value: laptopData.value.ram
+						value: laptopData.value.ram,
 					},
 					{
 						title: 'მეხსიერების ტიპი',
-						value: laptopData.value.hard_drive_type
+						value: laptopData.value.hard_drive_type,
 					},
 				],
 				row2: [
-						{
+					{
 						title: 'CPU',
-						value: laptopData.value.cpu && laptopData.value.cpu.name
+						value: laptopData.value.cpu && laptopData.value.cpu.name,
 					},
 					{
 						title: 'CPU-ს ბირთვი',
-						value: laptopData.value.cpu && laptopData.value.cpu.cores
+						value: laptopData.value.cpu && laptopData.value.cpu.cores,
 					},
 					{
 						title: 'CPU-ს ნაკადი',
-						value: laptopData.value.cpu && laptopData.value.cpu.threads
+						value: laptopData.value.cpu && laptopData.value.cpu.threads,
 					},
 				],
 				row3: [
-								{
+					{
 						title: 'ლეპტოპის მდგომარეობა',
-						value: laptopData.value.state
+						value: laptopData.value.state,
 					},
 					{
 						title: 'ლეპტოპის ფასი',
-						value: laptopData.value.price
+						value: laptopData.value.price,
 					},
-				]	,
+				],
 				row4: [
 					{
 						title: 'შეძენის რიცხვი',
-						value: laptopData.value.purchase_date
+						value: laptopData.value.purchase_date,
 					},
-				]
-				}
-			));
+				],
+			}));
 
 			store.getPositions();
 			store.getTeams();
@@ -168,12 +174,11 @@
 
 			onMounted(() => store.getLaptopInner(route.params.id));
 
-
 			return {
 				userInfo,
 				userData,
 				laptopInfo,
-				laptopData
+				laptopData,
 			};
 		},
 	};
@@ -186,13 +191,23 @@
 			position: absolute;
 			left: 50px;
 			top: 50px;
+			@media (max-width: 767px) {
+				left: 30px;
+				top: 33px;
+				svg {
+					width: 20px;
+					height: 20px;
+				}
+			}
 		}
 
 		.grid-col-2 {
 			@media (max-width: 1280px) {
 				grid-template-columns: 1fr;
-
 			}
+		}
+		.grid-gap-60 {
+			gap: 30px;
 		}
 		.records__title {
 			display: flex;
@@ -205,36 +220,59 @@
 			font-weight: 700;
 			font-size: 34px;
 			line-height: 21px;
+			@media (max-width: 767px) {
+				font-size: 16px;
+				line-height: 20px;
+				margin-bottom: 30px;
+				margin-top: 30px;
+			}
 		}
 		img {
 			width: 577px;
 			height: 342px;
+			@media (max-width: 767px) {
+				width: 100%;
+				height: 191px;
+			}
 		}
 		.border-bottom {
-			border-bottom: 1px solid #A5A5A5;
+			border-bottom: 1px solid #a5a5a5;
 			padding-bottom: 84px;
 			margin-bottom: 84px;
+			@media (max-width: 767px) {
+				padding-bottom: 41px;
+				margin-bottom: 41px;
+			}
 		}
 		.text-row-cont {
-				p {
-					width: 280px;
-					text-align: left;
-					font-weight: 400;
-					font-size: 22px;
-					line-height: 27px;
-					color: #797979;
-					&:first-child {
-						margin-right: 15px;
-						font-weight: 500;
-						color: #2E2E2E;
+			p {
+				width: 280px;
+				text-align: left;
+				font-weight: 400;
+				font-size: 22px;
+				line-height: 27px;
+				color: #797979;
+				@media (max-width: 767px) {
+					width: 40%;
+					font-size: 14px;
+				}
+				&:first-child {
+					margin-right: 15px;
+					font-weight: 500;
+					color: #2e2e2e;
+					@media (max-width: 767px) {
+						width: 55%;
 					}
 				}
-
+			}
 		}
 		.flex {
 			display: flex;
 			align-items: center;
 			margin-bottom: 30px;
+			@media (max-width: 767px) {
+				margin-bottom: 10px;
+			}
 		}
 	}
 </style>

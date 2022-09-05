@@ -1,6 +1,6 @@
 <template>
 	<div class="records container">
-			<router-link to="/" class="back pointer">
+		<router-link to="/" class="back pointer">
 			<svg
 				width="53"
 				height="53"
@@ -48,6 +48,14 @@
 			position: absolute;
 			left: 50px;
 			top: 50px;
+			@media (max-width: 767px) {
+				left: 30px;
+				top: 33px;
+				svg {
+					width: 20px;
+					height: 20px;
+				}
+			}
 		}
 		&__title {
 			margin-bottom: 97px;
@@ -58,15 +66,16 @@
 			font-size: 34px;
 			line-height: 21px;
 			@media (max-width: 767px) {
-
-			font-size: 16px;
-line-height: 20px;
+				font-size: 16px;
+				line-height: 20px;
+				margin-bottom: 30px;
+				margin-top: 30px;
 			}
 		}
 		.grid {
 			@media (max-width: 1439px) {
 				grid-template-columns: 1fr;
-				gap: 40px
+				gap: 40px;
 			}
 		}
 	}

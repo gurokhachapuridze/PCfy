@@ -25,12 +25,13 @@ p {
 	padding-right: 70px;
 	border: none;
 	cursor: pointer;
-	transition: .2s ease;
+	transition: 0.2s ease;
 	@media (max-width: 767px) {
 		min-width: 100%;
+		min-height: 60px;
 	}
 	&:hover {
-		background-color: #317AD0;
+		background-color: #317ad0;
 	}
 }
 
